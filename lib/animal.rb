@@ -1,6 +1,6 @@
 class Animal
-  attr_reader :animal_id, :animal_name, :animal_gender, :admittance, :animal_type, :animal_breed
-  attr_accessor :owner_id
+  attr_reader :animal_id, :animal_name, :animal_gender, :admittance, :animal_type, :animal_breed, :owner_id
+
   def initialize(attributes)
     @animal_id = attributes.fetch(:animal_id)
     @animal_name = attributes.fetch(:animal_name)
@@ -11,7 +11,7 @@ class Animal
     @owner_id = attributes.fetch(:owner_id)
   end
 
-  def self.all_basic(animals)
+  def self.all_basic(animals, unowned)
     output_animals = []
     animals.each() do |animal|
       animal_id = animal.fetch("id").to_i
@@ -21,14 +21,19 @@ class Animal
       animal_type = animal.fetch("type")
       animal_breed = animal.fetch("breed")
       owner_id = animal.fetch("owner_id").to_i
-      output_animals.push(Animal.new({:animal_id => animal_id, :animal_name => animal_name, :animal_gender => animal_gender, :admittance => admittance, :animal_type => animal_type, :animal_breed => animal_breed, :owner_id => owner_id}))
+      temp_animal = Animal.new({:animal_id => animal_id, :animal_name => animal_name, :animal_gender => animal_gender, :admittance => admittance, :animal_type => animal_type, :animal_breed => animal_breed, :owner_id => owner_id})
+      if (temp_animal.owner_id == 0) & (unowned)
+        output_animals.push(temp_animal)
+      elsif (temp_animal.owner_id != 0) & (!unowned)
+        output_animals.push(temp_animal)
+      end
     end
     output_animals
   end
 
   def self.all
     returned_animals = DB.exec("SELECT * FROM animals;")
-    Animal.all_basic(returned_animals)
+    Animal.all_basic(returned_animals, true)
   end
 
   def save
@@ -43,7 +48,7 @@ class Animal
   def self.get_by_id(id)
     animals = Animal.all
     animals.each do |animal|
-      if animal.id == id
+      if animal.animal_id == id
         return animal
       end
     end
@@ -51,6 +56,15 @@ class Animal
 
   def self.all_ordered(order_rule)
     returned_animals = DB.exec("SELECT * FROM animals ORDER BY #{order_rule};")
-    Animal.all_basic(returned_animals)
+    Animal.all_basic(returned_animals, true)
+  end
+
+  def found_home(owner_id)
+    DB.exec("UPDATE animals SET owner_id = #{owner_id} WHERE id = #{@animal_id}")
+  end
+
+  def self.get_owned_animals
+    returned_animals = DB.exec("SELECT * FROM animals;")
+    Animal.all_basic(returned_animals, false)
   end
 end

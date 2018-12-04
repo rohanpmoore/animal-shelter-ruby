@@ -5,10 +5,10 @@
 <h3>There are currently no animals up for adoption!</h3>
 <% end %>
 
-<ul>
-  <% @animals.each() do |animal| %>
-    <li><%= animal.animal_name() %></li>
-  <% end %>
-</ul>
+<% @animals.each do |animal| %>
+  <p>Name: <%= animal.animal_name %></p>
+  <p>Gender: <%= animal.animal_gender %></p>
+  <p>Type and Breed: <%= animal.animal_type %>, <%= animal.animal_breed %></p><br>
+<% end %>
 
 <h5><a href="/"> return home</a></h5>

@@ -1,0 +1,21 @@
+<h1>make owner</h1>
+<% if (@animals.length > 0) & (@customers.length > 0) %>
+  <form action="/make_owner" method="post">
+    <label for="animal">Which animal has a found a new home?</label>
+    <select name="animal">
+      <% @animals.each do |animal| %>
+        <option value="<%= animal.animal_id %>"><%= animal.animal_name %></option>
+      <% end %>
+    </select><br>
+    <label for="customer">Who is adopting the animal?</label>
+    <select name="customer">
+      <% @customers.each do |customer| %>
+        <option value="<%= customer.customer_id %>"><%= customer.customer_name %></option>
+      <% end %>
+    </select><br>
+    <button type="submit" name="button">Finalize</button>
+  </form>
+<% else %>
+  <p>There are no available animals or no current adoptors at this time!</p>
+<% end %>
+<h5><a href="/shelter"> Return to Shelter Page</a></h5>

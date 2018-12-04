@@ -1,0 +1,11 @@
+<h1> Animals available for adoption </h1>
+
+  <% @animals.each do |animal| %>
+    <p>Name: <%= animal.animal_name %></p>
+    <p>Gender: <%= animal.animal_gender %></p>
+    <p>Admittance date: <%= animal.admittance %></p>
+    <p>Type and Breed: <%= animal.animal_type %>, <%= animal.animal_breed %></p><br>
+  <% end %>
+
+<h5><a href="/add_animal"> Add New animal</a></h5>
+<h5><a href="/shelter"> Return to Shelter Page</a></h5>

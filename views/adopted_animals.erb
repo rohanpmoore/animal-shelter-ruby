@@ -1,0 +1,13 @@
+<h1>These animals have been adopted</h1>
+
+<% @animals.each do |animal| %>
+  <% adoptive_owner = Customer.get_by_id(animal.owner_id) %>
+  <p>Name: <%= animal.animal_name %></p>
+  <p>Gender: <%= animal.animal_gender %></p>
+  <p>Admittance date: <%= animal.admittance %></p>
+  <p>Type and Breed: <%= animal.animal_type %>, <%= animal.animal_breed %></p>
+  <p>Adopted by: <%= adoptive_owner.customer_name %></p>
+  <br>
+<% end %>
+
+<h5><a href="/shelter"> Return to Shelter Page</a></h5>
