@@ -1,15 +1,16 @@
-<h1>adding a customer</h1>
-
-<form action="/add_customer" method="post">
-  <label for="customer_name">What is the prospective owner's name?</label>
-  <input type="text" name="customer_name"><br>
-  <label for="customer_phone">What is the prospective owner's phone number?</label>
-  <input type="text" name="customer_phone"><br>
-  <label for="type_preference">What type of animal would the customer prefer?</label>
-  <input type="text" name="type_preference"><br>
-  <label for="breed_preference">What breed would the customer prefer?</label>
-  <input type="text" name="breed_preference"><br>
-  <button type="submit" name="button">Add Owner</button>
-</form>
+<h1>Add a New Customer</h1>
+<div class="well">
+  <form action="/add_customer" method="post" autocomplete="off">
+    <label for="customer_name">What is the prospective owner's name?</label>
+    <input type="text" name="customer_name"><br>
+    <label for="customer_phone">What is the prospective owner's phone number?</label>
+    <input type="text" name="customer_phone"><br>
+    <label for="type_preference">What type of animal would the customer prefer?</label>
+    <input type="text" name="type_preference"><br>
+    <label for="breed_preference">What breed would the customer prefer?</label>
+    <input type="text" name="breed_preference"><br>
+    <button type="submit" name="button">Add Owner</button>
+  </form>
+</div>
 
 <h5><a href="/shelter"> Return to Shelter Page</a></h5>

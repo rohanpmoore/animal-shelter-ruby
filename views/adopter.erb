@@ -4,11 +4,12 @@
 <% else %>
 <h3>There are currently no animals up for adoption!</h3>
 <% end %>
-
 <% @animals.each do |animal| %>
+<div class="well">
   <p>Name: <%= animal.animal_name %></p>
   <p>Gender: <%= animal.animal_gender %></p>
-  <p>Type and Breed: <%= animal.animal_type %>, <%= animal.animal_breed %></p><br>
+  <p>Type and Breed: <%= animal.animal_type %>, <%= animal.animal_breed %></p>
+</div>
 <% end %>
 
-<h5><a href="/"> return home</a></h5>
+<h5><a href="/"> Return Home</a></h5>

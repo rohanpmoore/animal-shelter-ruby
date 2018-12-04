@@ -1,17 +1,18 @@
-<h1>adding an animal</h1>
-
-<form action="/add_animal" method="post">
-  <label for="animal_name">What is the animal's name?</label>
-  <input type="text" name="animal_name"><br>
-  <label for="animal_gender">What is the animal's gender?</label>
-  <input type="text" name="animal_gender"><br>
-  <label for="admittance">When was the animal recieved (year-day-month)?</label>
-  <input type="text" name="admittance"><br>
-  <label for="animal_type">What type of animal?</label>
-  <input type="text" name="animal_type"><br>
-  <label for="animal_breed">What breed?</label>
-  <input type="text" name="animal_breed"><br>
-  <button type="submit" name="button">Add Pet</button>
-</form>
+<h1>Add New Animal</h1>
+<div class="well">
+  <form action="/add_animal" method="post" autocomplete="off">
+    <label for="animal_name">What is the animal's name?</label>
+    <input type="text" name="animal_name"><br>
+    <label for="animal_gender">What is the animal's gender?</label>
+    <input type="text" name="animal_gender"><br>
+    <label for="admittance">When was the animal recieved (year-day-month)?</label>
+    <input type="text" name="admittance"><br>
+    <label for="animal_type">What type of animal?</label>
+    <input type="text" name="animal_type"><br>
+    <label for="animal_breed">What breed?</label>
+    <input type="text" name="animal_breed"><br>
+    <button type="submit" name="button">Add Pet</button>
+  </form>
+</div>
 
 <h5><a href="/shelter"> Return to Shelter Page</a></h5>
