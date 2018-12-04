@@ -1,4 +1,5 @@
 class Customer
+  attr_reader :customer_id, :customer_name, :customer_phone, :type_preference, :breed_preference
   def initialize(attributes)
     @customer_id = attributes.fetch(:customer_id)
     @customer_name = attributes.fetch(:customer_name)

@@ -12,7 +12,7 @@ class Animal
   end
 
   def self.all_basic(animals)
-    animals = []
+    output_animals = []
     animals.each() do |animal|
       animal_id = animal.fetch("id").to_i
       animal_name = animal.fetch("name")
@@ -20,10 +20,10 @@ class Animal
       admittance = animal.fetch("admittance")
       animal_type = animal.fetch("type")
       animal_breed = animal.fetch("breed")
-      owner_id = animal.fetch("owner_id")
-      animals.push(Animal.new({:animal_id => animal_id, :animal_name => animal_name, :animal_gender => animal_gender, :admittance => admittance, :animal_type => animal_type, :animal_breed => animal_breed, :owner_id => owner_id}))
+      owner_id = animal.fetch("owner_id").to_i
+      output_animals.push(Animal.new({:animal_id => animal_id, :animal_name => animal_name, :animal_gender => animal_gender, :admittance => admittance, :animal_type => animal_type, :animal_breed => animal_breed, :owner_id => owner_id}))
     end
-    animals
+    output_animals
   end
 
   def self.all
