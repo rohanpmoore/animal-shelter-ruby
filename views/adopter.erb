@@ -1,0 +1,14 @@
+<h2>Adopter Page</h2>
+<% if @animals.length > 0 %>
+  <h3>Here are a list of animals that are available to adopt!</h3>
+<% else %>
+<h3>There are currently no animals up for adoption!</h3>
+<% end %>
+
+<ul>
+  <% @animals.each() do |animal| %>
+    <li><%= animal.animal_name() %></li>
+  <% end %>
+</ul>
+
+<h5><a href="/"> return home</a></h5>
